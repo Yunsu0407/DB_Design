@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <style>
 html, body {
 	margin: 0;
@@ -38,6 +38,11 @@ th {
 
 .signup-input {
 	width: 200px;
+}
+
+a {
+	padding: 0 70px;
+	color: blue;
 }
 </style>
 </head>

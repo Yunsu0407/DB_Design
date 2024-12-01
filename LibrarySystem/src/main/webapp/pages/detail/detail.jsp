@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도서 상세</title>
+<title>도서 대여</title>
 <style>
 html, body {
 	margin: 0;
@@ -29,6 +29,11 @@ th, td {
 
 .detail-anchors {
 	margin-top: 10px;
+}
+
+a {
+	padding: 0 10px;
+	color: blue;
 }
 </style>
 </head>
@@ -72,7 +77,7 @@ th, td {
 	%>
 	<div class="detail-container">
 		<div>
-			<h1>책 대출,예약 및 상세정보</h1>
+			<h1>도서 대여</h1>
 		</div>
 		<div>
 			<table border="1">
@@ -103,7 +108,8 @@ th, td {
 			</table>
 		</div>
 		<div class="detail-anchors">
-			<a href="/LibrarySystem">메인으로</a> <a href="/LibrarySystem/pages/rent/rent.jsp?id=<%=book.getId()%>">대출하기</a>
+			<a href="/LibrarySystem">메인으로</a> <a
+				href="/LibrarySystem/pages/rent/rent.jsp?id=<%=book.getId()%>">대여하기</a>
 		</div>
 	</div>
 </body>

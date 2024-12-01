@@ -29,6 +29,10 @@ th, td {
 	padding: 0 5px; /* 셀 내부 양옆 공백 설정 */
 	text-align: center; /* 텍스트 가운데 정렬 */
 }
+
+a {
+	color: blue;
+}
 </style>
 </head>
 <body>
@@ -76,7 +80,7 @@ th, td {
 					<tr>
 						<th>대출 번호</th>
 						<th>도서명</th>
-						<th>대출일</th>
+						<th>대여일</th>
 						<th>반납 예정일</th>
 						<th>반납일</th>
 						<th>반납 여부</th>

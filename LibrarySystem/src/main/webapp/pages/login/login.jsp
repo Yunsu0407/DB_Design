@@ -27,6 +27,11 @@ html, body {
 	gap: 10px;
 	display: flex;
 }
+
+a{
+	padding: 0 30px;
+	color: blue;
+}
 </style>
 <script>
 	function redirectToMain() {

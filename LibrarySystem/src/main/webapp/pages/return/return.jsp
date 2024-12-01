@@ -29,6 +29,10 @@ th, td {
 	padding: 5px;
 	text-align: center;
 }
+
+a {
+	color: blue;
+}
 </style>
 <script>
     function validateForm() {

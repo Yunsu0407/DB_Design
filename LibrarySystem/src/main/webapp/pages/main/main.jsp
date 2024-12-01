@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
 <%@page import="model.Book"%>
@@ -22,9 +23,7 @@ html, body {
 	justify-content: center;
 }
 
-.main-anchors {
-	margin-top: 10px;
-}
+
 
 .main-table {
 	padding: 10px 0 20px 0;
@@ -33,6 +32,20 @@ html, body {
 th, td {
 	padding: 0 5px; /* 셀 내부 양옆 공백 설정 */
 	text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+a{
+	color: blue;
+}
+
+.main-anchors a{
+	padding: 0 5px;
+}
+
+.temp {
+	display: flex;
+	flex-direction: row;
+	gap: 100px;
 }
 </style>
 </head>
@@ -44,7 +57,7 @@ th, td {
 
 	// 비로그인 상태 처리
 	if (loggedInUser == null) {
-	    loggedInUser = -1; // 비로그인 상태
+		loggedInUser = -1; // 비로그인 상태
 	}
 
 	String jdbcUrl = "jdbc:mysql://localhost:3306/DB_Design";
@@ -59,11 +72,8 @@ th, td {
 		Class.forName("com.mysql.cj.jdbc.Driver"); // MySQL 드라이버 로드
 		conn = DriverManager.getConnection(jdbcUrl, dbID, dbPS);
 		// 2. 쿼리 실행
-		sql = "SELECT b.id, b.name, b.author, b.publisher, c.name AS category_name, "
-		    + "b.total_qty, b.remain_qty, b.rate "
-		    + "FROM Book b "
-		    + "JOIN Category c ON b.category = c.id "
-		    + "ORDER BY b.id";
+		sql = "SELECT b.id, b.name, b.author, b.publisher, c.name AS category_name, " + "b.total_qty, b.remain_qty, b.rate "
+		+ "FROM Book b " + "JOIN Category c ON b.category = c.id " + "ORDER BY b.id";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 	} catch (Exception e) {
@@ -89,7 +99,22 @@ th, td {
 		<div>
 			<h1>도서 대여 시스템</h1>
 		</div>
-		<div>
+		<div class="temp">
+			<div class="main-anchors">
+				<%
+				if (loggedInUser != -1) { // 로그인 상태
+				%>
+				<a href="/LibrarySystem/pages/mypage/mypage.jsp">마이페이지</a> <a
+					href="/LibrarySystem/pages/logout/logout.jsp">로그아웃</a>
+				<%
+				} else { // 비로그인 상태
+				%>
+				<a href="/LibrarySystem/pages/signup/signup.jsp">회원가입</a> <a
+					href="/LibrarySystem/pages/login/login.jsp">로그인</a>
+				<%
+				}
+				%>
+			</div>
 			<div>
 				<form action="pages/search/search.jsp" method="get">
 					<select name="searchType">
@@ -101,21 +126,7 @@ th, td {
 				</form>
 			</div>
 		</div>
-		<div class="main-anchors">
-			<%
-			if (loggedInUser != -1) { // 로그인 상태
-			%>
-			<a href="/LibrarySystem/pages/mypage/mypage.jsp">마이페이지</a> 
-			<a href="/LibrarySystem/pages/logout/logout.jsp">로그아웃</a>
-			<%
-			} else { // 비로그인 상태
-			%>
-			<a href="/LibrarySystem/pages/signup/signup.jsp">회원가입</a> 
-			<a href="/LibrarySystem/pages/login/login.jsp">로그인</a>
-			<%
-			}
-			%>
-		</div>
+
 		<div class="main-table">
 			<table border="1">
 				<thead>
@@ -136,7 +147,8 @@ th, td {
 					%>
 					<tr>
 						<td><%=book.getId()%></td>
-						<td><a href="/LibrarySystem/pages/detail/detail.jsp?id=<%=book.getId()%>">
+						<td><a
+							href="/LibrarySystem/pages/detail/detail.jsp?id=<%=book.getId()%>">
 								<%=book.getName()%>
 						</a></td>
 						<td><%=book.getAuthor()%></td>
