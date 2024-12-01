@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+    <!-- 시작 페이지 설정 -->
+    <welcome-file-list>
+        <welcome-file>/pages/main/main.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
